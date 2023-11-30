@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Function Expression</title>
+  </head>
+  <body>
+    <h1>Function Expression</h1>
+    <script>
+      const bread = ["egg", "maida", "salt", "water"];
+
+      const res = bread.map(
+        (item) => item.charAt(0).toUpperCase() + item.substring(1)
+      );
+      console.log(res);
+      function checkIngredient(foodItem, ingredient) {
+        return foodItem.includes(ingredient);
+      }
+
+      const checkIngredient2 = (foodItem, ingredient) => {
+        return foodItem.includes(ingredient);
+      }; //not present in global object since it is not being hoisted
+
+      let hasIngredient = checkIngredient(bread, "egg");
+      hasIngredient = checkIngredient(bread, "salt");
+      console.log(hasIngredient);
+    </script>
+  </body>
+</html>

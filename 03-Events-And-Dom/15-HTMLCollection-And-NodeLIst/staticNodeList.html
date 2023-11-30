@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Static NodeList Example</title>
+  </head>
+  <body>
+    <div id="container">
+      <p>Paragraph 1</p>
+      <p>Paragraph 2</p>
+      <p>Paragraph 3</p>
+    </div>
+
+    <button id="addParagraph">Add Paragraph</button>
+
+    <script>
+      const paragraphs = document.querySelectorAll("p");
+      console.log(paragraphs.length);
+      document.getElementById("addParagraph").addEventListener("click", () => {
+        const newParagraph = document.createElement("p");
+        newParagraph.textContent = "New Paragraph";
+        document.getElementById("container").appendChild(newParagraph);
+
+        // This will not include the newly added paragraph
+        console.log(paragraphs.length);
+      });
+    </script>
+  </body>
+</html>
