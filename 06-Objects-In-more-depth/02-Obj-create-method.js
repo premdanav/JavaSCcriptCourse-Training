@@ -17,7 +17,7 @@ function User(firstName, lastName, address) {
 }
 
 function Character(firstName, lastName, address, show) {
-  User.call(this, firstName, lastName, address);
+  User.call(this, firstName, lastName, address); //like the super constructor
   this.show = show;
 }
 
