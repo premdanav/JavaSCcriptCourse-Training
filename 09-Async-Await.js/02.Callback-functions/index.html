@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Callback Functions</title>
+  </head>
+
+  <body>
+    <ul></ul>
+    <script>
+      let users = [];
+      function getUsersFromDatabase(callback) {
+        setTimeout(function () {
+          users = [
+            {
+              name: "Chris",
+              occupation: "Developer",
+            },
+            {
+              name: "Homer",
+              occupation: "Safety Inspector",
+            },
+          ];
+          console.log("get users from database");
+          callback();
+        }, 1000);
+      }
+      // getUsersFromDatabase(listUsers);
+
+      function listUsers() {
+        console.log("list users");
+        users.forEach((user) => {
+          const userName = document.createElement("li");
+          const name = document.createTextNode(user.name);
+          userName.appendChild(name);
+          document.querySelector("ul").appendChild(userName);
+        });
+      }
+      // listUsers();
+
+      function getOutOfBed(callback) {
+        console.log("out of bed");
+        callback();
+      }
+
+      function walkToKeys(callback) {
+        console.log("walk to keys");
+        callback();
+      }
+
+      function openCarDoor(callback) {
+        console.log("open car door");
+        callback();
+      }
+
+      function driveCar() {
+        console.log("drive car");
+      }
+
+      function completeTask() {
+        getOutOfBed(function () {
+          walkToKeys(function () {
+            openCarDoor(function () {
+              driveCar();
+            });
+          });
+        });
+      }
+
+      completeTask();
+    </script>
+  </body>
+</html>
