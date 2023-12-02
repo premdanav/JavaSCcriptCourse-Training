@@ -9,15 +9,33 @@
 
   <body>
     <script>
-      const promise1 = fetch('https://dog.ceo/api/breeds/image/random').then(
+      const promise1 = fetch("https://dog.ceo/api/breeds/image/random").then(
         function (response) {
           return response.json();
         }
       );
 
       const promise2 = new Promise(function (resolve, reject) {
-        setTimeout(resolve, 2000);
+        setTimeout(reject, 2000, "result");
       });
+
+      //resolve if all successfully resolve or one fails throw error
+      Promise.all([promise1, promise2])
+        .then((result) => {
+          console.log(result);
+        })
+        .catch((error) => {
+          console.log(`there is an error ${error}`);
+        });
+
+      //array of result or promises
+      Promise.allSettled([promise1, promise2])
+        .then((result) => {
+          console.log(result);
+        })
+        .catch((error) => {
+          console.log(`there is an error ${error}`);
+        });
     </script>
   </body>
 </html>

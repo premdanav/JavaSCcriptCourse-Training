@@ -10,13 +10,14 @@
   <body>
     <script>
       async function setImage() {
-        const response = await fetch('https://dog.ceo/api/breeds/image/random');
-        const response2 = await fetch(
-          'https://dog.ceo/api/breeds/image/random'
-        );
-        const response3 = await fetch(
-          'https://dog.ceo/api/breeds/image/random'
-        );
+        const response = fetch("https://dog.ceo/api/breeds/image/random");
+        const response2 = fetch("https://dog.ceo/api/breeds/image/random");
+        const response3 = fetch("https://dog.ceo/api/breeds/image/random");
+
+        const results = await Promise.all([response, response2, response3]);
+        results.forEach(async (value) => {
+          console.log(await value.json());
+        });
       }
       setImage();
     </script>

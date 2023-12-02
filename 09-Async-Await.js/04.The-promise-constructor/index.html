@@ -8,6 +8,22 @@
   </head>
 
   <body>
-    <script></script>
+    <script>
+      const promises = new Promise(function (resolve, reject) {
+        setTimeout(() => {
+          data = { name: "Chris" };
+          resolve("SUCCESS");
+          throw new Error('{err:"hello"}');
+        }, 2000);
+      });
+
+      promises.then((res) => {
+        console.log(res);
+        console.log(data);
+      });
+      promises.catch((err) => {
+        console.log(err);
+      });
+    </script>
   </body>
 </html>
